@@ -1,6 +1,8 @@
-def main():
-    print("Hello from gomoku-bot!")
+from fastapi import FastAPI
+
+app = FastAPI()
 
 
-if __name__ == "__main__":
-    main()
+@app.get("/healthz")
+def health_check() -> str:
+    return "ok"
