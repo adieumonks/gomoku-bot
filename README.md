@@ -12,15 +12,25 @@
 FastAPI アプリを `uv run uvicorn` で起動します。
 
 ```bash
-uv run uvicorn main:app --host 127.0.0.1 --port 8000
+uv run uvicorn main:app --host 127.0.0.1 --port 8080
 ```
+
+## Docker Compose 起動
+
+コンテナで実行する場合は次のコマンドを利用します（構成は `compose.yaml` に定義されています）。
+
+```bash
+docker compose up --build
+```
+
+起動後は `http://127.0.0.1:8080` にアクセスできます。
 
 ## 動作確認
 
 ヘルスチェックのエンドポイントに `curl` でアクセスします。
 
 ```bash
-curl -s http://127.0.0.1:8000/healthz
+curl -s http://127.0.0.1:8080/healthz
 ```
 
 `ok` が返れば起動確認は完了です。
@@ -34,7 +44,7 @@ curl -s http://127.0.0.1:8000/healthz
 
 ```bash
 curl -s \
-  -X POST http://127.0.0.1:8000/move \
+  -X POST http://127.0.0.1:8080/move \
   -H 'Content-Type: application/json' \
   -d '{
     "board_size": 13,
